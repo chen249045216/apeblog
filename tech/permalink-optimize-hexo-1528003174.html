@@ -2,14 +2,14 @@
 <html class="no-js" lang="zh-CN">
 <head>
     <!--[if lte IE 9]>
-<meta http-equiv="refresh" content="0;url=https://shuoit.net/warn.html">
+<meta http-equiv="refresh" content="0;url=https://apeskill.com/warn.html">
 <![endif]-->
 <meta charset="utf-8">
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
 <meta name="author" content="托码思(https://about.tangkunyin.com)">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta http-equiv="mobile-agent" content="format=html5; url=https://shuoit.net">
+<meta http-equiv="mobile-agent" content="format=html5; url=https://apeskill.com">
 <meta http-equiv="X-DNS-Prefetch-Control" content="on">
 
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
@@ -28,17 +28,17 @@
 <meta property="og:type" content="article" />
 <meta property="og:title" content="将hexo博客url优化进行到底 - 说IT" />
 <meta property="og:description" content="半个月前，患有强迫症晚期的我又拾起了hexo。这次通过阅读源码，加上了一直想要的时间戳变量。希望你们喜欢！" />
-<meta property="og:url" content="https://shuoit.net" />
+<meta property="og:url" content="https://apeskill.com" />
 <meta property="og:site_name" content="说IT" />
 
-<link rel="dns-prefetch" href="https://shuoit.net">
-<link rel="prefetch" href="https://shuoit.net">
-<link rel="prerender" href="https://shuoit.net">
+<link rel="dns-prefetch" href="https://apeskill.com">
+<link rel="prefetch" href="https://apeskill.com">
+<link rel="prerender" href="https://apeskill.com">
 <link rel="stylesheet" href="/css/JSimple.min.css">
     <script type="text/javascript">
         (function() {
             let jsi_config = {
-                rootUrl: 'https://shuoit.net/',
+                rootUrl: 'https://apeskill.com/',
                 isPost: 'true',
                 buildingTime: '01/20/2018',
                 snsQRCode: '',
@@ -173,13 +173,13 @@
             </div>
         </div>
         <div class="post-content markdown-body">
-            <h2 id="事件源自2017年元旦时的一篇博文"><a href="#事件源自2017年元旦时的一篇博文" class="headerlink" title="事件源自2017年元旦时的一篇博文"></a>事件源自2017年元旦时的一篇博文</h2><p><a href="https://shuoit.net/tech/hexo-links-1483800845.html">在hexo博客中打造相对完美的URL</a></p>
+            <h2 id="事件源自2017年元旦时的一篇博文"><a href="#事件源自2017年元旦时的一篇博文" class="headerlink" title="事件源自2017年元旦时的一篇博文"></a>事件源自2017年元旦时的一篇博文</h2><p><a target="_blank" rel="noopener" href="https://shuoit.net/tech/hexo-links-1483800845.html">在hexo博客中打造相对完美的URL</a></p>
 <p>那篇文章，我向大家介绍了如何在hexo博客中打造一个相对好看、好用的URL链接。然而遗憾的是，<strong>时间戳</strong>在permalink中没法直接使用。当时说了一个笨办法，就是模板中手动去加时间戳，然后文章生成是再取出来。不知道使用过的朋友有没有喷我…</p>
 <p>时隔一年多，我又准备玩hexo了，理由是被类似<strong>为知笔记</strong>这种东西伤透了心。</p>
 <p>然而也是一年多过去了，官方并没有做这样的支持，那我就不高兴了。在强迫症的驱使下，我读了他的源码，发现加这个时间戳相当简单，所以我义不容辞的提了这个<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/pull/3162">PR</a>。这是半个月前发生的事情，在我写这篇文章的时候，官方还没有Merge。所以你如果想在<strong>permalink</strong>中使用时间戳。办法就是人肉把<strong>node_module</strong>文件夹下指定的文件做修改。怎么改？改哪个文件？改成啥样？请直接看那个PR。</p>
 <p>如果一切顺利，你现在就能愉快的玩耍了。比如：</p>
 <blockquote>
-<p><a href="https://shuoit.net/tech/permalink-optimize-hexo-1528003174.html">https://shuoit.net/tech/permalink-optimize-hexo-1528003174.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://shuoit.net/tech/permalink-optimize-hexo-1528003174.html">https://shuoit.net/tech/permalink-optimize-hexo-1528003174.html</a></p>
 </blockquote>
 <p>当然别忘了配置站点**_config.yml**</p>
 <blockquote>

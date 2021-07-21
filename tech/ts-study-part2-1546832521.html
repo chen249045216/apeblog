@@ -2,14 +2,14 @@
 <html class="no-js" lang="zh-CN">
 <head>
     <!--[if lte IE 9]>
-<meta http-equiv="refresh" content="0;url=https://shuoit.net/warn.html">
+<meta http-equiv="refresh" content="0;url=https://apeskill.com/warn.html">
 <![endif]-->
 <meta charset="utf-8">
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
 <meta name="author" content="托码思(https://about.tangkunyin.com)">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta http-equiv="mobile-agent" content="format=html5; url=https://shuoit.net">
+<meta http-equiv="mobile-agent" content="format=html5; url=https://apeskill.com">
 <meta http-equiv="X-DNS-Prefetch-Control" content="on">
 
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
@@ -28,17 +28,17 @@
 <meta property="og:type" content="article" />
 <meta property="og:title" content="typescript入坑篇2 - 说IT" />
 <meta property="og:description" content="TypeScript入坑笔记第二篇。这一部分记录下编码规范和一些简单的语法问题。" />
-<meta property="og:url" content="https://shuoit.net" />
+<meta property="og:url" content="https://apeskill.com" />
 <meta property="og:site_name" content="说IT" />
 
-<link rel="dns-prefetch" href="https://shuoit.net">
-<link rel="prefetch" href="https://shuoit.net">
-<link rel="prerender" href="https://shuoit.net">
+<link rel="dns-prefetch" href="https://apeskill.com">
+<link rel="prefetch" href="https://apeskill.com">
+<link rel="prerender" href="https://apeskill.com">
 <link rel="stylesheet" href="/css/JSimple.min.css">
     <script type="text/javascript">
         (function() {
             let jsi_config = {
-                rootUrl: 'https://shuoit.net/',
+                rootUrl: 'https://apeskill.com/',
                 isPost: 'true',
                 buildingTime: '01/20/2018',
                 snsQRCode: '',
@@ -178,7 +178,7 @@
 </blockquote>
 <p>资料：</p>
 <ul>
-<li><a href="https://shuoit.net/tech/ts-study-part1-1528259629.html">入坑篇1（前置操作）</a></li>
+<li><a target="_blank" rel="noopener" href="https://shuoit.net/tech/ts-study-part1-1528259629.html">入坑篇1（前置操作）</a></li>
 <li><a target="_blank" rel="noopener" href="https://juejin.im/post/5b3859a36fb9a00e4d53fc85">自定义 tslint &amp; eslint 详细规则</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.tslang.cn/docs/handbook/basic-types.html">官方语法基础</a></li>
 <li><a target="_blank" rel="noopener" href="https://semlinker.com/ts-intro-and-guide/">Typescript Guidelines</a></li>
@@ -195,13 +195,13 @@
 
 <h4 id="2-配置编译选项tsc、文档生成、头文件等"><a href="#2-配置编译选项tsc、文档生成、头文件等" class="headerlink" title="2. 配置编译选项tsc、文档生成、头文件等"></a>2. 配置编译选项<code>tsc</code>、文档生成、头文件等</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;tsc&quot;: &quot;tsc&quot;,</span><br><span class="line">    &quot;dev&quot;: &quot;npm run tsc -w&quot;,</span><br><span class="line">    &quot;types&quot;: &quot;tsc -d --emitDeclarationOnly --allowJs false --declarationDir ./@types&quot;,</span><br><span class="line">    &quot;build&quot;: &quot;build options...&quot;,</span><br><span class="line">    &quot;prepush&quot;: &quot;npm run tsc &amp;&amp; npm run types&quot;,</span><br><span class="line">    &quot;prepublish&quot;: &quot;npm run prepush &amp;&amp; npm run build&quot;,</span><br><span class="line">    &quot;typingsdoc&quot;: &quot;npx typedoc --out ./typings/doc  ./src/**/*.ts  --module umd&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>其中这块的配置，在<a href="https://shuoit.net/tech/ts-study-part1-1528259629.html">part1</a>提到过，<a href="https://shuoit.net/tech/Allow--declaration-with--allowJs-1546511333.html">包括同时生成头文件并允许js文件输入</a></p>
+<p>其中这块的配置，在<a target="_blank" rel="noopener" href="https://shuoit.net/tech/ts-study-part1-1528259629.html">part1</a>提到过，<a target="_blank" rel="noopener" href="https://shuoit.net/tech/Allow--declaration-with--allowJs-1546511333.html">包括同时生成头文件并允许js文件输入</a></p>
 <p>这里把新增加的，简要说明下：</p>
 <ul>
 <li>dev: 监听.ts文件改动，实时编译。即增加<code>-w</code>参数可避免手动编译</li>
 <li>prepush: 合并了两个命令，并且<code>git push</code>时，会被触发。以此可强制推送前编译最新代码</li>
 <li>prepublish: 同样合并两个命令，在即将发布上线时使用</li>
-<li>typingsdoc: 生成Api文档。关于这个，不清楚的读者请看这篇文章：<a href="https://shuoit.net/tech/typedoc-notes-1544152560.html">Typedoc使用笔记</a></li>
+<li>typingsdoc: 生成Api文档。关于这个，不清楚的读者请看这篇文章：<a target="_blank" rel="noopener" href="https://shuoit.net/tech/typedoc-notes-1544152560.html">Typedoc使用笔记</a></li>
 </ul>
 <h4 id="3-tslint及tsconfig"><a href="#3-tslint及tsconfig" class="headerlink" title="3. tslint及tsconfig"></a>3. tslint及tsconfig</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tslint.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;defaultSeverity&quot;</span>: <span class="string">&quot;error&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;extends&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;tslint:recommended&quot;</span>,</span><br><span class="line">    <span class="string">&quot;tslint-config-prettier&quot;</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">&quot;rules&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;encoding&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;no-console&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">&quot;object-literal-sort-keys&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">&quot;interface-name&quot;</span>: [<span class="literal">true</span>, <span class="string">&quot;never-prefix&quot;</span>],</span><br><span class="line">    <span class="attr">&quot;no-unused-expression&quot;</span>: [<span class="literal">true</span>, <span class="string">&quot;allow-fast-null-checks&quot;</span>],</span><br><span class="line">    <span class="attr">&quot;only-arrow-functions&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">&quot;no-duplicate-imports&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;no-mergeable-namespace&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;import-spacing&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;interface-over-type-literal&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;new-parens&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;no-shadowed-variable&quot;</span>: [</span><br><span class="line">      <span class="literal">true</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;class&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">&quot;enum&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">&quot;function&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">&quot;interface&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">&quot;namespace&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">&quot;typeAlias&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">&quot;typeParameter&quot;</span>: <span class="literal">false</span></span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">&quot;variable-name&quot;</span>: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tsconfig.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;charset&quot;</span>: <span class="string">&quot;utf8&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;sourceMap&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;allowSyntheticDefaultImports&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;target&quot;</span>: <span class="string">&quot;es5&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;moduleResolution&quot;</span>: <span class="string">&quot;node&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;module&quot;</span>: <span class="string">&quot;umd&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;outDir&quot;</span>: <span class="string">&quot;./built&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;experimentalDecorators&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;removeComments&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;preserveConstEnums&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;allowJs&quot;</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;include&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;src/**/*&quot;</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">&quot;exclude&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;node_modules&quot;</span>,</span><br><span class="line">    <span class="string">&quot;built&quot;</span>,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 

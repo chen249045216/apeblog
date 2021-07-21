@@ -2,14 +2,14 @@
 <html class="no-js" lang="zh-CN">
 <head>
     <!--[if lte IE 9]>
-<meta http-equiv="refresh" content="0;url=https://shuoit.net/warn.html">
+<meta http-equiv="refresh" content="0;url=https://apeskill.com/warn.html">
 <![endif]-->
 <meta charset="utf-8">
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
 <meta name="author" content="托码思(https://about.tangkunyin.com)">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta http-equiv="mobile-agent" content="format=html5; url=https://shuoit.net">
+<meta http-equiv="mobile-agent" content="format=html5; url=https://apeskill.com">
 <meta http-equiv="X-DNS-Prefetch-Control" content="on">
 
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
@@ -28,17 +28,17 @@
 <meta property="og:type" content="article" />
 <meta property="og:title" content="jsimple主题用户指南 - 说IT" />
 <meta property="og:description" content="这里，我将为大家写一篇早就该写的文档，关于JSimple主题的用户使用指南。如果你下载了这个主题使用中遇到了麻烦和错误，请第一时间阅读本文。当然，主题也在持续优化和改进，本文也将跟进。方便就请保存书签。" />
-<meta property="og:url" content="https://shuoit.net" />
+<meta property="og:url" content="https://apeskill.com" />
 <meta property="og:site_name" content="说IT" />
 
-<link rel="dns-prefetch" href="https://shuoit.net">
-<link rel="prefetch" href="https://shuoit.net">
-<link rel="prerender" href="https://shuoit.net">
+<link rel="dns-prefetch" href="https://apeskill.com">
+<link rel="prefetch" href="https://apeskill.com">
+<link rel="prerender" href="https://apeskill.com">
 <link rel="stylesheet" href="/css/JSimple.min.css">
     <script type="text/javascript">
         (function() {
             let jsi_config = {
-                rootUrl: 'https://shuoit.net/',
+                rootUrl: 'https://apeskill.com/',
                 isPost: 'true',
                 buildingTime: '01/20/2018',
                 snsQRCode: '',
@@ -190,7 +190,7 @@
 <p>如果新建的文章要归属于某个分类，请在<code>categories</code>处对应你的分类名称即可。标签使用同理，一篇文章可以有多个标签，打标签的方式就是写成数组方式。<code>photos</code>是缩略图，地址可以是相对的，也可以是绝对的。</p>
 </blockquote>
 <p><strong>page</strong>模板同上，但没有<code>categories</code>和<code>tags</code>，多了<code>comments</code>，后者用来控制独立页是否支持评论组件。至于要把作者的信息放到模板里，是考虑到如果网站采用投稿方式，可以保留原创信息。即：显示不同作者不同文章信息，不会乱！</p>
-<h4 id="2、站点分类别名和自定义URL配置"><a href="#2、站点分类别名和自定义URL配置" class="headerlink" title="2、站点分类别名和自定义URL配置"></a>2、站点分类别名和自定义URL配置</h4><p>关于自定义URL，请参考这篇文章：<a href="https://shuoit.net/tech/hexo-links-1483800845.html">在hexo博客中打造相对完美的URL</a></p>
+<h4 id="2、站点分类别名和自定义URL配置"><a href="#2、站点分类别名和自定义URL配置" class="headerlink" title="2、站点分类别名和自定义URL配置"></a>2、站点分类别名和自定义URL配置</h4><p>关于自定义URL，请参考这篇文章：<a target="_blank" rel="noopener" href="https://shuoit.net/tech/hexo-links-1483800845.html">在hexo博客中打造相对完美的URL</a></p>
 <p><strong>分类别名</strong>和<strong>标签别名</strong>配置，站点<code>_config.yml</code>文件中，其中主题配置文件里的<code>menu</code>项需要和<code>category_map</code>键值对一致。二者顺序可以不同，但是主题中的顺序决定网站导航栏菜单的顺序。</p>
 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># Category &amp; Tag</span></span><br><span class="line"><span class="symbol">default_category:</span> 技术</span><br><span class="line"><span class="symbol">category_map:</span></span><br><span class="line">   技术: tech</span><br><span class="line">   人文: humanity</span><br><span class="line"><span class="symbol">tag_map:</span></span><br><span class="line"><span class="symbol">  hexo:</span> hexo</span><br><span class="line">  生活: life</span><br></pre></td></tr></table></figure>
 

@@ -2,14 +2,14 @@
 <html class="no-js" lang="zh-CN">
 <head>
     <!--[if lte IE 9]>
-<meta http-equiv="refresh" content="0;url=https://shuoit.net/warn.html">
+<meta http-equiv="refresh" content="0;url=https://apeskill.com/warn.html">
 <![endif]-->
 <meta charset="utf-8">
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
 <meta name="author" content="托码思(https://about.tangkunyin.com)">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta http-equiv="mobile-agent" content="format=html5; url=https://shuoit.net">
+<meta http-equiv="mobile-agent" content="format=html5; url=https://apeskill.com">
 <meta http-equiv="X-DNS-Prefetch-Control" content="on">
 
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
@@ -28,17 +28,17 @@
 <meta property="og:type" content="article" />
 <meta property="og:title" content="typescript入坑篇1 - 说IT" />
 <meta property="og:description" content="TypeScript入坑笔记第一篇。从没有到Hello World。除此之外，还将记录使用ESLint+Prettier来统一前端代码风格。" />
-<meta property="og:url" content="https://shuoit.net" />
+<meta property="og:url" content="https://apeskill.com" />
 <meta property="og:site_name" content="说IT" />
 
-<link rel="dns-prefetch" href="https://shuoit.net">
-<link rel="prefetch" href="https://shuoit.net">
-<link rel="prerender" href="https://shuoit.net">
+<link rel="dns-prefetch" href="https://apeskill.com">
+<link rel="prefetch" href="https://apeskill.com">
+<link rel="prerender" href="https://apeskill.com">
 <link rel="stylesheet" href="/css/JSimple.min.css">
     <script type="text/javascript">
         (function() {
             let jsi_config = {
-                rootUrl: 'https://shuoit.net/',
+                rootUrl: 'https://apeskill.com/',
                 isPost: 'true',
                 buildingTime: '01/20/2018',
                 snsQRCode: '',
@@ -189,7 +189,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tslint.json</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;defaultSeverity&quot;</span>: <span class="string">&quot;error&quot;</span>,</span><br><span class="line">    <span class="string">&quot;extends&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;tslint:recommended&quot;</span>,</span><br><span class="line">        <span class="string">&quot;tslint-config-prettier&quot;</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tsconfig.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;sourceMap&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;allowSyntheticDefaultImports&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;declaration&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="string">&quot;target&quot;</span>: <span class="string">&quot;es6&quot;</span>,</span><br><span class="line">    <span class="string">&quot;moduleResolution&quot;</span>: <span class="string">&quot;node&quot;</span>,</span><br><span class="line">    <span class="string">&quot;allowJs&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;module&quot;</span>: <span class="string">&quot;umd&quot;</span>,</span><br><span class="line">    <span class="string">&quot;outDir&quot;</span>: <span class="string">&quot;./dist&quot;</span>,</span><br><span class="line">    <span class="string">&quot;experimentalDecorators&quot;</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;exclude&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;node_modules&quot;</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// package.json</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;tslint&quot;</span>: <span class="string">&quot;^5.12.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;tslint-config-prettier&quot;</span>: <span class="string">&quot;^1.17.0&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 其中scripts内需要配上tsc</span></span><br><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;build&quot;</span>: <span class="string">&quot;tsc&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prepare&quot;</span>: <span class="string">&quot;npm run build&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>关于这个架手架的源码，可以参考这里：<a target="_blank" rel="noopener" href="https://github.com/tangkunyin/hello-fe/tree/master/TypeScript">TypeScript</a></p>
-<p>到现在为止，好像关于写TS的事情并没有记录。做了太多前置工作，内容放到<a href="https://shuoit.net/tech/ts-study-part2-1546832521.html">part2</a>吧…</p>
+<p>到现在为止，好像关于写TS的事情并没有记录。做了太多前置工作，内容放到<a target="_blank" rel="noopener" href="https://shuoit.net/tech/ts-study-part2-1546832521.html">part2</a>吧…</p>
 <p>另外，叨叨一句，<strong>EditorConfig</strong>可以不用了（要了也是多余）</p>
 <blockquote>
 <p>参考资料：</p>
