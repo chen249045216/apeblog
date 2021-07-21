@@ -1,179 +1,125 @@
-<!DOCTYPE HTML>
-<html class="no-js" lang="zh-CN">
+<!DOCTYPE html>
+<html>
+
 <head>
-    <!--[if lte IE 9]>
-<meta http-equiv="refresh" content="0;url=https://apeskill.com/warn.html">
-<![endif]-->
-<meta charset="utf-8">
-<meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
-<meta name="author" content="托码思(https://about.tangkunyin.com)">
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta http-equiv="mobile-agent" content="format=html5; url=https://apeskill.com">
-<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+     
 
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-
-
-<link rel="shortcut icon" href="/images/favicon.png">
-
-
-<title>mrc和arc混编 - 说IT</title>
-
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+<title>MRC和ARC混编 | 说IT</title>
+<link href="/img/favicon.png" rel="shortcut icon">
+<meta name="author" content="托码思(https://about.tangkunyin.com) ">
+<meta name="copyright" content="托码思(https://about.tangkunyin.com)">
 <meta name="keywords" content="iOS, MRC, ARC">
-
-<meta name="description " content="来自2015.5.7的笔记：MRC和ARC混编设置。">
-
-<!-- Jetpack Open Graph Tags -->
-<meta property="og:type" content="article" />
-<meta property="og:title" content="mrc和arc混编 - 说IT" />
-<meta property="og:description" content="来自2015.5.7的笔记：MRC和ARC混编设置。" />
-<meta property="og:url" content="https://apeskill.com" />
+<meta name="description" content="来自2015.5.7的笔记：MRC和ARC混编设置。" />
+<meta property="site_name" content="说IT " />
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://apeskill.com/tech/mrc-and-arc-1528012490.html">
+<meta property="og:title" content="MRC和ARC混编 | 说IT" />
 <meta property="og:site_name" content="说IT" />
-
-<link rel="dns-prefetch" href="https://apeskill.com">
-<link rel="prefetch" href="https://apeskill.com">
-<link rel="prerender" href="https://apeskill.com">
-<link rel="stylesheet" href="/css/JSimple.min.css">
-    <script type="text/javascript">
-        (function() {
-            let jsi_config = {
-                rootUrl: 'https://apeskill.com/',
-                isPost: 'true',
-                buildingTime: '01/20/2018',
-                snsQRCode: '',
-                donateImg: '/images/donate-qr.png',
-                readMode: 'day',
-                localSearch: { dbPath: '' }
-            };
-            
-                jsi_config.localSearch = {
-                    dbPath: '/search.json',
-                    trigger: 'auto',
-                    topN: '1',
-                    unescape: 'false'
-                }
-            
-            window.jsi_config = jsi_config;
-        })()
-    </script>
+<meta property="og:description" content="来自2015.5.7的笔记：MRC和ARC混编设置。" />
+<meta property="og:locale" content="zh-cn,en,default">
+<meta property="article:author" content="托码思(https://about.tangkunyin.com) ">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link href="https://apeskill.com" rel="prefetch">
+<link href="//cdn.jsdelivr.net" rel="preconnect" crossorigin>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link href="/css/main.css " rel="stylesheet">
+<script src="/js/utlis.js"></script>
+ 
     
-<script src="/js/SimpleCore.min.js"></script>
-
+ 
 <meta name="generator" content="Hexo 5.4.0"></head>
+
 <body>
-<div id="nav">
-    <nav class="nav-menu">
-        <a class="site-name current" href="/" title="说">说</a>
-        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
-        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
-        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
-        <!-- custom single page of menus -->
-        
-        
-        <a href="/help" title="帮助">
-            <i class="fa fa-question-circle"></i>
-            <span>帮助</span>
-        </a>
-        
-    </nav>
-</div>
-
-<div class="nav-user">
-    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
-    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+     
     
-</div>
-<div id="wrapper" class="clearfix">
-    <div id="body">
-        <div class="main" id="main">
-            <div id="cover">
-    <img class="cover-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://shuoit.net/images/cover-day.jpg" alt="cover-img" loading="lazy" />
-    <div class="cover-info">
+ 
+     
+
+<script>
+    var $config = {
         
-        <h1 class="cover-siteName">说IT</h1>
-        <h3 class="cover-siteTitle">用代码摇滚这个世界</h3>
-        <p class="cover-siteDesc">一个关注技术与人文的IT博客</p>
-        <div class="cover-sns">
-            
-    &nbsp;&nbsp;<div class="btn btn-telegram">
-        <a href="https://t.me/kunyintang" target="_blank" title="telegram" ref="friend">
-            <i class="fa fa-telegram"></i>
-        </a>
+        search_file: "/search.xml",
+        
+        
+        code_block_expand: {
+            enable: true,
+            height: 400,
+            scrollTop: 200
+        }
+        
+    }
+</script>
+    
+
+
+
+
+  
+
+
+    <div id="body_wrap">
+        <nav class="navbar">
+    <div id="navbar_wrap">
+        <a href="/" class="blog_name">说IT</a>
+        
+            <i class="fas fa-search search_btn" ></i>
+        
+        <i class="fas fa-bars open_nav"></i>
+        <ul class="menu">
+          
+        </ul>
     </div>
-
-    &nbsp;&nbsp;<div class="btn btn-twitter">
-        <a href="https://twitter.com/tangkunyin" target="_blank" title="twitter" ref="friend">
-            <i class="fa fa-twitter"></i>
-        </a>
-    </div>
-
-    &nbsp;&nbsp;<div class="btn btn-github">
-        <a href="https://github.com/tangkunyin" target="_blank" title="github" ref="friend">
-            <i class="fa fa-github"></i>
-        </a>
-    </div>
-
-    &nbsp;&nbsp;<div class="btn btn-stack-overflow">
-        <a href="https://stackoverflow.com/users/6133063/tangkunyin" target="_blank" title="stack-overflow" ref="friend">
-            <i class="fa fa-stack-overflow"></i>
-        </a>
-    </div>
-
-
-        </div>
-    </div>
-</div>
-
-            <div class="page-title">
+</nav>
+<div id="mobile_nav">
     <ul>
-        <li><a href="/">最近</a></li>
-        
-            
-                <li class="active">
-                    <a href="/categories/tech" data-name="技术">技术</a>
-                </li>
-            
-                <li class="">
-                    <a href="/categories/huma" data-name="人文">人文</a>
-                </li>
-            
-        
-        <li class="page-search">
-    <form id="search" class="search-form">
-        <input type="text"
-               readonly="readonly"
-               id="local-search-input-tip"
-               placeholder="读物检索~" />
-        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
-    </form>
-</li>
-
+    
     </ul>
 </div>
-<div class="main-inner">
-    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-        <div class="post-header">
-            <div class="post-author clearfix">
-                <a class="avatar fleft" href="https://www.tangkunyin.com"
-                   target="_blank">
-                    <img width="48" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/images/favicon.png" alt="avatar"/>
-                </a>
-                <p><span class="label">作者</span>
-                    <a href="https://about.tangkunyin.com"
-                       target="_blank">托码思</a>
-                    <span title="最后编辑于&nbsp;2018-06-03">2018-06-03</span>
-                </p>
-                <p>一个写代码的「伪文人」</p>
-            </div>
-            <h2 class="post-title">MRC和ARC混编</h2>
-            <div class="post-meta">
-                本文共计186个字 |
-                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
-            </div>
-        </div>
-        <div class="post-content markdown-body">
-            <p>从XCode5以后，默认都采用了ARC，但有时候又想使用MRC，无奈写了MRC语法后，编译器保持：</p>
+        <dev id="main_wrap">
+                <main class="main">
+                        
+ 
+<article class="post">
+  <div class="post_info">
+    <div class="post_title">
+      <h1>MRC和ARC混编</h1>
+    </div>
+    <div class="post_meta">
+      <div class="post_date">
+        <i class="far fa-calendar-alt fa-fw post-meta-icon"></i>
+        <span class="post-meta-label">
+          Created
+            2018-06-03 |
+        </span>
+        
+        <i class="fas fa-history fa-fw post-meta-icon"></i>
+        <span class="post-meta-label">
+          Updated
+            2021-07-21
+        </span>
+      </div>
+      <div class="post-meta-wordcount">
+        <i class="far fa-file-word fa-fw post-meta-icon"></i>
+        <span class="post-meta-label">Word Count:</span>
+        <span class="word-count">94 | </span>
+        <i class="far fa-clock fa-fw post-meta-icon"></i>
+        <span class="post-meta-label">Reading time:</span>
+        <span>1min</span>
+        
+        | <i class="far fa-eye fa-fw post-meta-icon"></i>
+        <span id="/tech/mrc-and-arc-1528012490.html" class="leancloud_visitors">
+            <span class="post-meta-label">Visitors:</span>
+            <span class="leancloud-visitors-count" id="twikoo_visitors">0</span>
+        </span>
+        
+      </div>
+    </div>
+  </div>
+  <div class="post_content">
+    <p>从XCode5以后，默认都采用了ARC，但有时候又想使用MRC，无奈写了MRC语法后，编译器保持：</p>
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/img/2018/15280126158577.jpg"></p>
 <p>解决方式如下：</p>
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/img/2018/15280126834131.jpg"></p>
@@ -183,176 +129,302 @@
 <p>MRC工程中也可以使用ARC的类。方法如下：</p>
 <p>在targets的build phases选项下Compile Sources下选择要使用arc编译的文件，双击它，输入 -fobjc-arc 即可</p>
 
-            
+  </div>
+   
+   
+
+  
+  <div class="post_copyright">
+    <div class="post_copyright_icon"></div>
+      <div class="post_copyright_author">
+          <span class="post_copyright_meta">Authorship: </span>
+            <span class="post_copyright_info">
+              <a href="mailto:lete@lete114.top" >Lete乐特</a>
+            </span>
+      </div>
+      <div class="post_copyright_type">
+          <span class="post_copyright_meta">Article Links: </span>
+            <span class="post_copyright_info">
+              <a href="https://apeskill.com/tech/mrc-and-arc-1528012490.html" >https://apeskill.com/tech/mrc-and-arc-1528012490.html</a>
+            </span>
+      </div><div class="post_copyright_notice">
+          <span class="post_copyright_meta">Copyright: </span>
+            <span class="post_copyright_info">本博客所有文章除特别声明外，均采用
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/ " target="_blank" >
+                  CC BY-NC-SA 4.0 </a> 许可协议。转载请注明来自
+              <a href="https://apeskill.com/tech/mrc-and-arc-1528012490.html" target="_blank" >Lete乐特's Blog</a>
+              ！</span>
+      </div>
+  </div>
+  
+
+
+ 
+
+
+
+ 
+ 
+
+  
+  <div class="post_reward">
+      <div class="reward_button" >
+           Reward
+           <div class="reward_main">
+              <ul class="reward_all">
                 
+                  <li class="reward_item"><a href="https://cdn.jsdelivr.net/gh/lete114/CDN@2.0/Use/zfb.png"
+                          target="_blank">
+                          <img class="post_qr_code_img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://cdn.jsdelivr.net/gh/lete114/CDN@2.0/Use/zfb.png"></a>
+                      <div class="post_qr_code_desc">alipay</div>
+                  </li>
+                  
+                  
+                  <li class="reward_item"><a href="https://cdn.jsdelivr.net/gh/lete114/CDN@2.0/Use/wzf.png"
+                          target="_blank">
+                          <img class="post_qr_code_img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://cdn.jsdelivr.net/gh/lete114/CDN@2.0/Use/wzf.png"></a>
+                      <div class="post_qr_code_desc">wechat</div>
+                  </li>
+                  
+              </ul>
+          </div>
+      </div>
+  </div>
+  
+  
+   
+  <div class="pagination">
     
-        <div class="adsense_post_left">
-            
-    <ins class="adsbygoogle"
-         style="display:inline-block;width:160px;height:600px"
-         data-ad-client="ca-pub-4837253996935841"
-         data-ad-slot="1712444257"></ins>
-
-        </div>
-        <div class="adsense_post_right">
-            
-    <ins class="adsbygoogle"
-         style="display:inline-block;width:160px;height:600px"
-         data-ad-client="ca-pub-4837253996935841"
-         data-ad-slot="6857083436"></ins>
-
-        </div>
-        <p class="adsense_tb_horizontal">
-            
-    <ins class="adsbygoogle"
-         style="display:block; text-align:center;"
-         data-ad-layout="in-article"
-         data-ad-format="fluid"
-         data-ad-client="ca-pub-4837253996935841"
-         data-ad-slot="9087656062"></ins>
-
-        </p>
+    <a href="/tech/instancetype-iOS-1528012736.html" class="page_pre">
+        <i class="fas fa-arrow-alt-circle-left"></i>
+        上一篇
+    </a>
     
     
-        <script type="text/javascript">
-$(function () {
-    setTimeout(function() {
-        let script = document.createElement("script");
-        script.setAttribute("async", "");
-        script.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-        document.body.appendChild(script);
-         
-            <!-- 自定义广告 -->
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        
-    }, 1200);
-});
-</script>
+    <a href="/tech/property-and-memberVar-in-iOS-1528011307.html" class="page_next">
+        下一篇
+        <i class="fas fa-arrow-alt-circle-right"></i>
+    </a>
     
+</div>
+</article>
 
-            
-        </div>
-        <div class="post-tool">
-            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
-                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
-            </a>
+    <div class="comment_head" id="Direct comments">
+        <hr>
+        <div class="comment_headline">
+            <i class="fas fa-comments fa-fw"></i>
+            <span>评论</span>
         </div>
         
-        <div class="post-tags">标签：
             
-            <a href="/tags/objective-c/">objective-c</a>
-            
-            <a href="/tags/ios/">苹果</a>
-            
-        </div>
-        
-    </article>
-    
-        <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
-    
-    
-    
-    
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-        <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-        <div id="gitalk-container"></div>
-        <script type="text/javascript">
-            var gitalk = new Gitalk({
-                clientID: 'bc04b5293e95199aa50c',
-                clientSecret: 'e63a958fd4b540ecb78b14c3212022b8b0136284',
-                id: md5(window.location.pathname),
-                title: 'MRC和ARC混编',
-                repo: 'apeblog',
-                owner: 'chen249045216',
-                admin: 'chen249045216',
-                distractionFreeMode: 'true',
-                perPage: 6,
-                pagerDirection: 'last'
-            })
-            gitalk.render('gitalk-container')
-        </script>
-    
-
-
-</div>
-
-
-        </div><!-- end #main-->
-    </div><!-- end #body -->
-    <footer class="footer">
-    <div class="footer-inner" style="text-align: center">
-        <p>
-            <a href="/about"  title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
-            <!-- 自定义链接 -->
-            <a href="/help" title="帮助" >帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
-            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
-            <a href="/sitemap.xml" title="地图">地图</a>
-        </p>
-        <p>
-            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br/>
-            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
-            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
-            ，作者&nbsp<a href="https://about.tangkunyin.com" target="_blank" rel="friend">托码思</a>
-            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
-            
-        </p>
-    </div>
-</footer>
-</div>
-<!-- search pop -->
-<div class="popup search-popup local-search-popup">
-    <div class="local-search-header clearfix">
-        <span class="search-icon">
-            <i class="fa fa-search"></i>
-        </span>
-        <span class="popup-btn-close">
-            <i class="fa fa-times-circle"></i>
-        </span>
-        <div class="local-search-input-wrapper">
-            <input id="local-search-input"
-                   spellcheck="false"
-                   type="text"
-                   autocomplete="off"
-                   placeholder="请输入查询关键词"/>
-        </div>
-    </div>
-    <div id="local-search-result"></div>
-</div>
-<div class="fixed-btn">
-    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
-</div>
-
-    <script type="text/javascript">
-        let bp = document.createElement('script');
-        let curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+<div id="wcomments"></div>
+<script>
+function LoadWaline() {
+    getScript("//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js",function(){
+        let initData = {
+            el: '#wcomments',
+            path: location.pathname,
+            serverURL: 'https://waline.vercel.app/',
+            placeholder: '快来评论吧!!',
+            avatar: '',
+            meta: 'nick,mail,link'.split(","),
+            requiredFields: 'nick,mail,link'.split(","),
+            pageSize: 5,
+            lang: 'zh-CN',
+            emojiCDN: '',
+            emojiMaps: null,
+            visitor: true
         }
-        bp.setAttribute("async", "");
-        let s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
+        var option = false;
+        if (option) {
+            initData = Object.assign(initData, option)
+        }
+        new Waline(initData)
+    })
+}
+LoadWaline()
+</script>
+        
+    </div>
+
+ 
+ 
+
+                </main>
+        </dev>
+        <section id="rightside">
+    
+    <div class="rightside_item">
+        
+        
+         
+         
+        
+         
+         
+        <a href="javascript:(0)" id="darkmode" title="Dark/Light ">
+            <i class="fas fa-moon"></i>
+        </a>
+         
+        
+        
+            <a href="#Direct comments" title="Direct comments">
+                <i class="fas fa-comments"></i>
+            </a>
+        
+        <a href="#" title="Back To Top">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+    </div>
+</section>
+         
+
+<footer class="footer" id="footer">
+    <div class="copyright">
+      &copy; 2020 - 2021
+        <i class="fas fa-fan"></i>
+        托码思(https://about.tangkunyin.com)
+    </div>
+    <div class="framework-info">
+        <span>Framework </span>
+        <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="footer-separator">|</span>
+        <span>Theme </span>
+        <a href="https://github.com/lete114/hexo-theme-MengD" target="_blank">MengD.(萌典) </a>
+    </div>
+    
+    <div class="custom-text">我相信我可以，但我一直在路上，所以我有无限的可能！！</div>
+</footer>
+    </div>
+    <div id="mask" onclick="close_all()"></div>
+    
+    <div id="local_search">
+        <div id="local_search_title">Local Search </div>
+        <input id="local_search_input" autocomplete="off" placeholder="Search the article"
+            type="text">
+        <hr>
+        <div id="local_search_result"></div>
+        <span class="search_close_button"><i class="fas fa-times"></i></span>
+    </div>
+    <script src="/js/search.js"></script>
+
+    <div class="script">
+        <script src="/js/main.js"></script>
+        
+
+ 
+<script>
+    var originTitle = document.title;
+    var titleTime;
+    document.addEventListener("visibilitychange", function () {
+        if (document.hidden) {
+            document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+            clearTimeout(titleTime);
+        } else {
+            document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+            titleTime = setTimeout(function () {
+                document.title = originTitle;
+            }, 2000);
+        }
+    });
+</script>
+
+
+<script src="/js/lazyload.js"></script>
+
+
+
+    
+
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+    <script>
+        var pjax = new Pjax({
+            selectors: [
+                "head title",
+                "main.main",
+                "#rightside"
+            ],
+            cache: true,
+            cacheBust: false
+        });
+
+        // 清除时间
+        var timer = null;
+        // 执行进度条
+        function ProgressStart(){
+            // 设置初始进度
+            var progress = 10;
+            // 创建进度条 及 css样式
+            var div = document.createElement('div');
+            div.className = "pjax_progress";
+            document.body.prepend(div);
+            // 定义随机数最大值最小值
+            var max=10,mini=3;
+            var result=max-mini;
+            // 清除
+            clearInterval(timer);
+            // 0.5秒内累加进度
+            timer = setInterval(function(){
+                // 随机数
+                var num = parseInt(Math.random()*result);
+                var randomResult = num+mini;
+                // 累加
+                progress+=randomResult
+                document.getElementsByClassName("pjax_progress")[0].style.width = progress+"%";
+                // 当进度达到95%时停止
+                if(progress>95)progress=95
+            },500)
+        }
+        // 加载进度条加载完毕
+        function ProgressFinish(){
+            clearInterval(timer);
+            // 页面加载完毕后进度100% 并在0.7秒后删除
+            var progress = document.getElementsByClassName("pjax_progress");
+            progress[0].style.width = "100%";
+            timer = setTimeout(function () {
+            progress[0].parentNode.removeChild(progress[0])
+            }, 700);
+        }
+
+        // 开始 PJAX 执行的函数
+		document.addEventListener('pjax:send', function () {
+            // 执行进度条
+            ProgressStart()
+        });
+        // PJAX 完成之后执行的函数，可以和上面的重载放在一起
+		document.addEventListener('pjax:complete', function () {
+
+            // 加载进度条加载完毕
+            ProgressFinish()
+            // 执行所有方法
+            exe_all_fn()
+
+            
+                // 图片懒加载
+                ImgLazyLoad("body img[data-img]","data-img")
+            
+            
+            
+            document.querySelectorAll('script[data-pjax]').forEach(item => {
+                const newScript = document.createElement('script')
+                const content = item.text || item.textContent || item.innerHTML || ""
+                Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+                newScript.appendChild(document.createTextNode(content))
+                item.parentNode.replaceChild(newScript, item)
+            })
+        });
+
+        // Pjax请求错误时，跳转到404页面
+        document.addEventListener('pjax:error', (err) => {
+            if (err.request.status === 404) {
+                pjax.loadUrl('/404.html')
+            }
+        })
     </script>
 
-
-    
-        <script type="text/javascript">
-            $(function () {
-                setTimeout(function() {
-                    let script = document.createElement("script");
-                    script.setAttribute("async", "");
-                    script.src = "//www.googletagmanager.com/gtag/js?id=UA-131527701-1";
-                    document.body.appendChild(script);
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    gtag('config', 'UA-131527701-1');
-                }, 600);
-            });
-        </script>
-    
-
+    </div>
 <script>
             window.imageLazyLoadSetting = {
                 isSPA: false,
@@ -360,4 +432,5 @@ $(function () {
                 processImages: null,
             };
         </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(i){i.imageLazyLoadSetting.processImages=a;var n=i.imageLazyLoadSetting.isSPA,o=i.imageLazyLoadSetting.preloadRatio||1,l=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function a(){n&&(l=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var r=0;r<l.length;r++)t=l[r],void 0,0<=(e=t.getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(i.innerHeight*o||document.documentElement.clientHeight*o)&&function(t){var e,i,n,o,a=l[r];e=a,i=function(){l=l.filter(function(t){return a!==t})},n=new Image,o=e.getAttribute("data-original"),n.onload=function(){e.src=o,i&&i()},e.src!==o&&(n.src=o)}();var t,e}a(),i.addEventListener("scroll",function(){var t,e;t=a,e=i,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+
 </html>
