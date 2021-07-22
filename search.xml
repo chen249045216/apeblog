@@ -4,6 +4,29 @@
   
     
     <entry>
+      <title>Tags</title>
+      <link href="/article/cf8e3b18.html"/>
+      <url>/article/cf8e3b18.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Foo </tag>
+            
+            <tag> Bar </tag>
+            
+            <tag> Baz </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>试试链接效果</title>
       <link href="/article/2ccf7dc2.html"/>
       <url>/article/2ccf7dc2.html</url>
