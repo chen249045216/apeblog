@@ -7,18 +7,18 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
-<title>程序员</title>
+<title>友情链接 | 程序员</title>
 <link href="/img/favicon.png" rel="shortcut icon">
 <meta name="author" content="程序员 ">
 <meta name="copyright" content="程序员">
 <meta name="keywords" content="">
-<meta name="description" content="" />
+<meta name="description" content="我们欢迎你如何添加友情链接？技术交流，添加友链，可以联系：联系邮箱：&#x32;&#52;&#x39;&#48;&#x34;&#x35;&#x32;&#x31;&#54;&#64;&#113;&#x71;&#46;&#x63;&#111;&#x6d;微信：cp_ztmscode {    padding: .1rem .2rem;    background: rgba(27,31,35,.05);    color: #f47466;    border-radius: 5px;    margin: 0 6px;    word-wrap: break-word;  " />
 <meta property="site_name" content="程序员 " />
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://apeskill.com/tags/Baz/index.html">
-<meta property="og:title" content="程序员" />
+<meta property="og:url" content="https://apeskill.com/link/index.html">
+<meta property="og:title" content="友情链接 | 程序员" />
 <meta property="og:site_name" content="程序员" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="我们欢迎你如何添加友情链接？技术交流，添加友链，可以联系：联系邮箱：&amp;#x32;&amp;#52;&amp;#x39;&amp;#48;&amp;#x34;&amp;#x35;&amp;#x32;&amp;#x31;&amp;#54;&amp;#64;&amp;#113;&amp;#x71;&amp;#46;&amp;#x63;&amp;#111;&amp;#x6d;微信：cp_ztmscode {    padding: .1rem .2rem;    background: rgba(27,31,35,.05);    color: #f47466;    border-radius: 5px;    margin: 0 6px;    word-wrap: break-word;  " />
 <meta property="og:locale" content="en">
 <meta property="article:author" content="程序员 ">
 <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -131,29 +131,111 @@
                 <main class="main">
                         
 
+    <div class="page_title">
+        友情链接
+    </div>
 
-<div class="article_count">Baz - 1</div>
- 
-<div class="archive_article_info">
 
-    
-    
-    
-        
-        <h4 class="archive_year">2013</h4>
-    
-        <div class="article_item">
-            
-            <a class="article_title_item" href="/article/cf8e3b18.html" title="Tags">Tags</a>
-        
-            <time class="post_created_date">
-                <i class="far fa-calendar-alt"></i>
-                 12-24
-            </time>
-        </div>
+<div class="link" id="link">
 
 </div>
+<script>
+    
 
+    
+    /*通过仓库pr修改link.yml方式*/
+    ajax({
+        url: "https://cdn.jsdelivr.net/gh/chen249045216/CDN@latest/link.yml",
+        async:false,
+        success: function(data){
+            getScript("https://cdn.jsdelivr.net/npm/js-yaml@latest/dist/js-yaml.min.js",function(){
+                data = JSON.stringify(jsyaml.load(data))
+                data = JSON.parse([data]);
+                
+                for (let i in data) {
+                    var desc = data[i].class_desc == null?'':data[i].class_desc;
+                    var title = data[i].class_name;
+                    
+                        // 添加在结尾
+                        var idLink = document.querySelector("#link")
+                        idLink.insertAdjacentHTML('beforeend','<h2>'+title+'</h2>')
+                        idLink.insertAdjacentHTML('beforeend','<div class="link-subtitle">'+desc+'</div>')
+                        idLink.insertAdjacentHTML('beforeend','<div class="link-list"></div>')
+                    
+                    for (let j in data[i].link_list) {
+                        var name = data[i].link_list[j].name;
+                        var link = data[i].link_list[j].link;
+                        var avatar = data[i].link_list[j].avatar;
+                        var descr = data[i].link_list[j].descr;
+                        var itemLink = '<div class="link-list-item"><a target="_blank" rel="noopener" href="'+link+'"><img src="'+avatar+'" alt="'+descr+'"><span class="link-item-name">'+name+'</span><span class="link-item-desc">'+descr+'</span></a></div>'
+                        
+                            document.querySelector(".link-list:last-child").insertAdjacentHTML('beforeend',itemLink)
+                        
+                    }
+                }
+            }) 
+        }
+    })
+    
+</script>
+
+
+<div class="content"><h2 id="我们欢迎你"><a href="#我们欢迎你" class="headerlink" title="我们欢迎你"></a>我们欢迎你</h2><br>
+
+<p>如何添加友情链接？<br>技术交流，添加友链，可以联系：<br>联系邮箱：<a href="mailto:&#x32;&#52;&#x39;&#48;&#x34;&#x35;&#x32;&#x31;&#54;&#64;&#113;&#x71;&#46;&#x63;&#111;&#x6d;">&#x32;&#52;&#x39;&#48;&#x34;&#x35;&#x32;&#x31;&#54;&#64;&#113;&#x71;&#46;&#x63;&#111;&#x6d;</a><br>微信：cp_ztms</p>
+<style>
+code {
+    padding: .1rem .2rem;
+    background: rgba(27,31,35,.05);
+    color: #f47466;
+    border-radius: 5px;
+    margin: 0 6px;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+</style>
+</div>
+
+ 
+
+    <div class="comment_head" id="Direct comments">
+        <hr>
+        <div class="comment_headline">
+            <i class="fas fa-comments fa-fw"></i>
+            <span>评论</span>
+        </div>
+        
+            
+<div id="wcomments"></div>
+<script>
+function LoadWaline() {
+    getScript("//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js",function(){
+        let initData = {
+            el: '#wcomments',
+            path: location.pathname,
+            serverURL: 'https://waline.vercel.app/',
+            placeholder: '快来评论吧!!',
+            avatar: '',
+            meta: 'nick,mail,link'.split(","),
+            requiredFields: 'nick,mail,link'.split(","),
+            pageSize: 5,
+            lang: 'zh-CN',
+            emojiCDN: '',
+            emojiMaps: null,
+            visitor: true
+        }
+        var option = false;
+        if (option) {
+            initData = Object.assign(initData, option)
+        }
+        new Waline(initData)
+    })
+}
+LoadWaline()
+</script>
+        
+    </div>
 
                 </main>
         </dev>
@@ -171,6 +253,11 @@
             <i class="fas fa-moon"></i>
         </a>
          
+        
+        
+            <a href="#Direct comments" title="Direct comments">
+                <i class="fas fa-comments"></i>
+            </a>
         
         <a href="#" title="Back To Top">
             <i class="fas fa-arrow-up"></i>
