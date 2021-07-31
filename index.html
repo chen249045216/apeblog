@@ -152,14 +152,25 @@
     
          
         <div class="post_item">
-            <a class="post_title" href="/article/9daba997.html" title="测试 ">
-                测试
+            <a class="post_title" href="/article/5c024575.html" title="抖音去水印方法 ">
+                抖音去水印方法
             </a>
             <div class="post_description">
                  
-                图片测试
-https://apeskill.com/js/lazyload.jshttps://apeskill.com/js/lazyLoad.js
+                教程开始
+点击抖音的分享按钮，获取链接
+ 这里我以《快看》为例
+ 地址：https://www.douyin.com/share/video/6990712289280216358
 
+复制链接浏览器打开
+ 打开后按F12—&gt;选择手机模式—&gt;刷新网页—&gt;选择Network—&gt;搜索框内输入item—&gt;选择Headers—&gt;展开General
+ 
+
+复制Requst URL的链接到地址栏回车(手机模式)
+ 打开后按F12—&gt;依次展开—&gt;item_list—&gt;0—&gt;video—&gt;play_addr—&gt;url_list—&gt;0
+ 最终得到0: “https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200f480000bs78bq8ckillkpgb8c8g&amp;ratio=720p&amp;line=0“ 
+
+最后一步 复制0后面的链接复制到浏览器地址栏 将链接的playwm改为play 说明：wm为Watermark而Watermark翻译过来就是水印 修改后：
             </div>
             
             <div class="post_meta_wrap">
@@ -178,40 +189,6 @@ https://apeskill.com/js/lazyload.jshttps://apeskill.com/js/lazyLoad.js
         
          
         <div class="post_item">
-            <a class="post_title" href="/article/2ccf7dc2.html" title="试试链接效果 ">
-                试试链接效果
-            </a>
-            <div class="post_description">
-                 
-                
-            </div>
-            
-            <div class="post_meta_wrap">
-                <span class="post_meta_date">
-                    <i class="far fa-calendar-alt"></i>
-                    <span>Created  </span>
-                    <span>
-                        2021-07-22
-                    </span>
-                </span>
-                
-
-                
-                    <span class="post_tag">
-                    <i class="fa fa-tag"></i>
-                    
-                    <a href="/tags/%E6%B5%8B%E8%AF%95/">
-                        测试
-                    </a>
-                    
-                    
-                </span>
-                
-            </div>
-        </div>
-        
-         
-        <div class="post_item">
             <a class="post_title" href="/article/ecd1925.html" title="快速搭建个人博客 ">
                 快速搭建个人博客
             </a>
@@ -221,9 +198,9 @@ https://apeskill.com/js/lazyload.jshttps://apeskill.com/js/lazyLoad.js
 vscode
 markdown
 github
-hexo为什么需要一个独立的博客？
+hexo
 
-
+为什么需要一个独立的博客？
 本地markdown管理文章文件，真正将自己的文章把我在自己的手中，随意可以导出到任何平台上
 没有广告
 有自己的域名
@@ -281,43 +258,6 @@ Linux (DEB/RPM-based): Install it with NodeSource.
                     
                     
                 </span>
-                
-            </div>
-        </div>
-        
-         
-        <div class="post_item">
-            <a class="post_title" href="/article/undefined.html" title="Hello World ">
-                Hello World
-            </a>
-            <div class="post_description">
-                 
-                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
-
-More info: Writing
-Run server1$ hexo server
-
-More info: Server
-Generate static files1$ hexo generate
-
-More info: Generating
-Deploy to remote sites1$ hexo deploy
-
-More info: Deployment
-
-            </div>
-            
-            <div class="post_meta_wrap">
-                <span class="post_meta_date">
-                    <i class="far fa-calendar-alt"></i>
-                    <span>Created  </span>
-                    <span>
-                        2021-07-21
-                    </span>
-                </span>
-                
-
                 
             </div>
         </div>
